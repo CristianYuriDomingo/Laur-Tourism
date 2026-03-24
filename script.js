@@ -154,4 +154,42 @@ document.addEventListener('DOMContentLoaded',function(){
       if(mm){mm.classList.remove('open');document.body.style.overflow='';}
     }
   });
+
+  /* ── DYNAMIC STATS ──
+     Counts real cards from attractions.html and visit.html via shared data attributes.
+     On index.html, the stat elements exist but the grids don't — so we fetch the counts
+     from the actual source pages using the same card markup conventions.
+  */
+  updateStats();
 });
+
+function updateStats(){
+  var stats=document.querySelectorAll('.stat');
+  if(!stats.length)return;
+
+  var attrGrid=document.getElementById('attr-grid');
+  var stayGrid=document.getElementById('stay-grid');
+  var data=typeof LAUR_DATA!=='undefined'?LAUR_DATA:null;
+
+  stats.forEach(function(stat){
+    var label=stat.querySelector('.stat-l');
+    var numEl=stat.querySelector('.stat-n');
+    if(!label||!numEl)return;
+    var labelText=label.textContent.trim().toLowerCase();
+
+    if(labelText.includes('attraction')){
+      var count=attrGrid
+        ? attrGrid.querySelectorAll('.card').length
+        : (data?data.attractions:null);
+      if(count) numEl.textContent=count+'+';
+    }
+    if(labelText.includes('resort')||labelText.includes('stay')){
+      var count=stayGrid
+        ? stayGrid.querySelectorAll('.card').length
+        : (data?data.stays:null);
+      if(count) numEl.textContent=count+'+';
+    }
+    if(labelText.includes('barangay')&&data) numEl.textContent=data.barangays;
+    if(labelText.includes('cabanatuan')&&data) numEl.textContent=data.distanceHours;
+  });
+}
