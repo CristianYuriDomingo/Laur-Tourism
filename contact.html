@@ -35,14 +35,18 @@
 <body>
 
 <nav class="nav" id="navbar">
-  <div class="nav-logo"><div class="nav-seal">LT</div><div class="nav-brand"><strong>Laur Tourism</strong><span>Nueva Ecija · Philippines</span></div></div>
+  <div class="nav-logo">
+    <!-- LOGO: Replace with your image: <img src="your-logo.png" alt="Laur Tourism Logo" class="nav-logo-img"> -->
+    <div class="nav-seal nav-seal-placeholder"><span>LT</span></div>
+    <div class="nav-brand"><strong>Laur Tourism</strong><span>Nueva Ecija · Philippines</span></div>
+  </div>
   <div class="nav-links">
     <a href="index.html">Home</a><a href="about.html">About</a>
     <div class="dropdown"><a href="attractions.html">Explore &#9660;</a><div class="dropdown-menu"><a href="attractions.html">Attractions</a><a href="gallery.html">Photo Gallery</a></div></div>
     <div class="dropdown"><a href="visit.html">Visit &#9660;</a><div class="dropdown-menu"><a href="visit.html#stay">Where to Stay</a><a href="visit.html#eat">Where to Eat</a><a href="visit.html#shops">Shops & Stores</a></div></div>
     <a href="gallery.html">Gallery</a><a href="contact.html" class="active">Contact</a>
   </div>
-  <a href="contact.html" class="nav-cta">Plan Your Trip</a>
+  <!-- Plan Your Trip button removed -->
   <button class="hamburger" onclick="toggleMobile()" id="ham"><span></span><span></span><span></span></button>
 </nav>
 
@@ -62,7 +66,6 @@
   </div>
 </div>
 
-<!-- CONTACT -->
 <section class="sec alt">
   <div class="sec-head">
     <div class="eyebrow">Tourism Office</div>
@@ -71,7 +74,7 @@
   <div class="contact-simple">
     <div>
       <h3>Laur Tourism Office</h3>
-      <p>Municipal Hall, Poblacion<br>Laur, Nueva Ecija, Philippines<br>Monday–Friday · 8:00 AM – 5:00 PM</p>
+      <p>Tablang - Gabaldon Road, Brgy III<br>Laur, Nueva Ecija, Philippines<br>Monday–Friday · 8:00 AM – 5:00 PM</p>
       <a href="https://facebook.com/laurtourism" target="_blank" rel="noopener" class="btn-fb">Message us on Facebook</a>
     </div>
     <div class="contact-map-side">
@@ -80,7 +83,6 @@
   </div>
 </section>
 
-<!-- EMERGENCY NUMBERS -->
 <section class="sec" id="emergency">
   <div class="sec-head">
     <div class="eyebrow">Emergency Contacts</div>
@@ -88,83 +90,17 @@
     <p class="sec-sub">Tap any number to call directly on your phone.</p>
   </div>
   <div class="em-grid-new">
-
-    <div class="em-card">
-      <div class="em-logo">
-        <!-- <img src="rhu-logo.png" alt="RHU"> -->
-        <span class="em-logo-placeholder">RHU</span>
-      </div>
-      <div class="em-name">RHU (Doctor)</div>
-      <div class="em-num"><a href="tel:09815164728">0981-516-4728</a></div>
-    </div>
-
-    <div class="em-card">
-      <div class="em-logo">
-        <!-- <img src="mdrrmo-logo.png" alt="MDRRMO"> -->
-        <span class="em-logo-placeholder">MDRRMO</span>
-      </div>
-      <div class="em-name">MDRRMO (Rescue)</div>
-      <div class="em-num"><a href="tel:08981001380">0898-100-1380</a></div>
-    </div>
-
-    <div class="em-card">
-      <div class="em-logo">
-        <!-- <img src="menro-logo.png" alt="MENRO"> -->
-        <span class="em-logo-placeholder">MENRO</span>
-      </div>
-      <div class="em-name">MENRO (Basura)</div>
-      <div class="em-num"><a href="tel:09362900527">0936-290-0527</a></div>
-    </div>
-
-    <div class="em-card">
-      <div class="em-logo">
-        <!-- <img src="ambulance-logo.png" alt="Ambulance"> -->
-        <span class="em-logo-placeholder">AMB</span>
-      </div>
-      <div class="em-name">Ambulance</div>
-      <div class="em-num"><a href="tel:09815164728">0981-516-4728</a></div>
-    </div>
-
-    <div class="em-card">
-      <div class="em-logo">
-        <!-- <img src="mswdo-logo.png" alt="MSWDO"> -->
-        <span class="em-logo-placeholder">MSWDO</span>
-      </div>
-      <div class="em-name">MSWDO</div>
-      <div class="em-num"><a href="tel:09616082331">0961-608-2331</a></div>
-    </div>
-
-    <div class="em-card">
-      <div class="em-logo">
-        <!-- <img src="pnp-logo.png" alt="PNP"> -->
-        <span class="em-logo-placeholder">PNP</span>
-      </div>
-      <div class="em-name">PNP (Pulis)</div>
-      <div class="em-num"><a href="tel:09985985429">0998-598-5429</a></div>
-    </div>
-
-    <div class="em-card">
-      <div class="em-logo">
-        <!-- <img src="bfp-logo.png" alt="BFP"> -->
-        <span class="em-logo-placeholder">BFP</span>
-      </div>
-      <div class="em-name">BFP (Bumbero)</div>
-      <div class="em-num"><a href="tel:09425516197">0942-551-6197</a></div>
-    </div>
-
-    <div class="em-card">
-      <div class="em-logo">
-        <!-- <img src="neeco-logo.png" alt="NEECO"> -->
-        <span class="em-logo-placeholder">NEECO</span>
-      </div>
-      <div class="em-name">NEECO</div>
-      <div class="em-num"><a href="tel:09285524681">0928-552-4681</a></div>
-    </div>
-
+    <div class="em-card"><div class="em-logo"><span class="em-logo-placeholder">RHU</span></div><div class="em-name">RHU (Doctor)</div><div class="em-num"><a href="tel:09815164728">0981-516-4728</a></div></div>
+    <div class="em-card"><div class="em-logo"><span class="em-logo-placeholder">MDRRMO</span></div><div class="em-name">MDRRMO (Rescue)</div><div class="em-num"><a href="tel:08981001380">0998-100-1380</a></div></div>
+    <div class="em-card"><div class="em-logo"><span class="em-logo-placeholder">MENRO</span></div><div class="em-name">MENRO (Basura)</div><div class="em-num"><a href="tel:09362900527">0936-290-0527</a></div></div>
+    <div class="em-card"><div class="em-logo"><span class="em-logo-placeholder">AMB</span></div><div class="em-name">Ambulance</div><div class="em-num"><a href="tel:09815164728">0981-516-4728</a></div></div>
+    <div class="em-card"><div class="em-logo"><span class="em-logo-placeholder">MSWDO</span></div><div class="em-name">MSWDO</div><div class="em-num"><a href="tel:09616082331">0961-608-2331</a></div></div>
+    <div class="em-card"><div class="em-logo"><span class="em-logo-placeholder">PNP</span></div><div class="em-name">PNP (Pulis)</div><div class="em-num"><a href="tel:09985985429">0998-598-5429</a></div></div>
+    <div class="em-card"><div class="em-logo"><span class="em-logo-placeholder">BFP</span></div><div class="em-name">BFP (Bumbero)</div><div class="em-num"><a href="tel:09425516197">0942-551-6197</a></div></div>
+    <div class="em-card"><div class="em-logo"><span class="em-logo-placeholder">NEECO</span></div><div class="em-name">NEECO</div><div class="em-num"><a href="tel:09285524681">0928-552-4681</a></div></div>
   </div>
 </section>
 
-<!-- HOW TO GET THERE -->
 <section class="sec alt" id="directions">
   <div class="sec-head">
     <div class="eyebrow">Getting Here</div>
@@ -172,21 +108,9 @@
     <p class="sec-sub">Laur is easily accessible from Manila and nearby cities in Nueva Ecija.</p>
   </div>
   <div class="route-grid">
-    <div class="route-card">
-      <div class="route-title">From Manila</div>
-      <p class="route-desc">Take a bus from Cubao or Araneta to Cabanatuan City, then ride a jeepney or tricycle heading to Laur.</p>
-      <span class="route-time">Approx. 3–4 hours</span>
-    </div>
-    <div class="route-card">
-      <div class="route-title">From Cabanatuan City</div>
-      <p class="route-desc">Drive via General Tinio Street heading east towards Laur. Follow road signs for Laur, Nueva Ecija.</p>
-      <span class="route-time">Approx. 1–1.5 hours</span>
-    </div>
-    <div class="route-card">
-      <div class="route-title">From Nearby Towns</div>
-      <p class="route-desc">Tricycles and jeepneys are available from Gabaldon, Bongabon, and neighboring municipalities.</p>
-      <span class="route-time">Approx. 20–40 minutes</span>
-    </div>
+    <div class="route-card"><div class="route-title">From Manila</div><p class="route-desc">Take a bus from Cubao or Araneta to Cabanatuan City, then ride a jeepney or tricycle heading to Laur.</p><span class="route-time">Approx. 3–4 hours</span></div>
+    <div class="route-card"><div class="route-title">From Cabanatuan City</div><p class="route-desc">Drive via General Tinio Street heading east towards Laur. Follow road signs for Laur, Nueva Ecija.</p><span class="route-time">Approx. 1–1.5 hours</span></div>
+    <div class="route-card"><div class="route-title">From Nearby Towns</div><p class="route-desc">Tricycles and jeepneys are available from Gabaldon, Bongabon, and neighboring municipalities.</p><span class="route-time">Approx. 20–40 minutes</span></div>
   </div>
 </section>
 
