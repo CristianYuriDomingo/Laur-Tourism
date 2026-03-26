@@ -18,39 +18,113 @@
 .nav-brand strong,.nav-brand span,.nav-links a,.dropdown-menu a,.mobile-links a,.mobile-fb{font-family:'DM Sans',sans-serif;}
 h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:'Playfair Display',serif!important;letter-spacing:0;}
 
-/* ===== MODAL ===== */
+/* ===== SOCIAL ICONS (footer) ===== */
+.social-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;overflow:hidden;background:#f0f0f0;transition:opacity .2s;}
+.social-btn:hover{opacity:.8;}
+.social-btn img{width:22px;height:22px;object-fit:contain;display:block;}
+
+/* ===== CARD LOCATION ICON ===== */
+.card-loc{display:flex;align-items:center;gap:5px;}
+.card-loc img{width:13px;height:13px;object-fit:contain;flex-shrink:0;}
+
+/* =====================================================
+   SCROLL / ENTRANCE ANIMATIONS
+   ===================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.anim-block { opacity: 0; }
+
+.anim-up.in-view    { animation: fadeUp   .65s both cubic-bezier(.22,.68,0,1.05); }
+.anim-fade.in-view  { animation: fadeIn   .65s both cubic-bezier(.22,.68,0,1.05); }
+.anim-left.in-view  { animation: slideLeft  .7s both cubic-bezier(.22,.68,0,1.05); }
+.anim-right.in-view { animation: slideRight .7s both cubic-bezier(.22,.68,0,1.05); }
+.anim-scale.in-view { animation: scaleIn  .55s both cubic-bezier(.22,.68,0,1.05); }
+
+.delay-1 { animation-delay:  80ms !important; }
+.delay-2 { animation-delay: 160ms !important; }
+.delay-3 { animation-delay: 240ms !important; }
+.delay-4 { animation-delay: 320ms !important; }
+.delay-5 { animation-delay: 400ms !important; }
+.delay-6 { animation-delay: 480ms !important; }
+
+.eyebrow { position: relative; display: inline-block; }
+.eyebrow::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 1.5px;
+  background: linear-gradient(90deg, #2D9158, #8BC83A);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .55s ease .25s;
+}
+.eyebrow.line-visible::after { transform: scaleX(1); }
+
+/* =====================================================
+   MODAL — identical to index.html
+   ===================================================== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,42,20,.6);z-index:600;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px)}
 .modal-overlay.open{display:flex}
 .modal-box{background:#fff;border-radius:24px;width:100%;max-width:820px;overflow:hidden;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 32px 80px rgba(0,0,0,.22)}
-.modal-hd{background:linear-gradient(135deg,#2D9158,#4BAD71);padding:1.3rem 1.8rem;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
-.modal-hd h3{color:#fff;font-family:'Playfair Display',serif;font-size:1.25rem;margin:0}
-.modal-hd small{color:rgba(255,255,255,.75);font-size:11px;letter-spacing:1px;text-transform:uppercase;display:block;margin-top:2px;font-family:'DM Sans',sans-serif;}
-.modal-close{background:rgba(255,255,255,.18);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;flex-shrink:0;cursor:pointer;transition:background .2s}
+
+.modal-hd{background:linear-gradient(135deg,#2D9158,#4BAD71);padding:1.3rem 1.8rem;display:flex;align-items:center;flex-shrink:0;}
+.modal-hd-left{flex:1;}
+.modal-hd-center{flex:2;text-align:center;}
+.modal-hd-right{flex:1;display:flex;justify-content:flex-end;}
+.modal-hd h3{color:#fff;font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;margin:0;letter-spacing:0;}
+.modal-hd small{color:rgba(255,255,255,.75);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-top:3px;font-family:'DM Sans',sans-serif;}
+.modal-close{background:rgba(255,255,255,.18);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;flex-shrink:0;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;}
 .modal-close:hover{background:rgba(255,255,255,.3)}
-.modal-inner{display:grid;grid-template-columns:1fr 1fr;flex:1;min-height:0}
-.modal-photo{background-size:cover;background-position:center;background-color:#e8f5ec;min-height:340px}
+
+.modal-inner{display:grid;grid-template-columns:1fr 1fr;min-height:420px;}
+
+.modal-photo{overflow:hidden;background:#e8f5ec;display:flex;align-items:center;justify-content:center;}
+.modal-photo img{width:100%;height:auto;max-height:100%;object-fit:contain;object-position:center;display:block;}
+
 .modal-right{display:flex;flex-direction:column;overflow-y:auto}
 .modal-body{padding:1.8rem 1.8rem 1rem;flex:1}
 .mrow{margin-bottom:1.1rem}
 .mlbl{font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-weight:600;font-family:'DM Sans',sans-serif;}
 .mval{font-size:14px;color:#333;line-height:1.6;font-family:'DM Sans',sans-serif;}
-
-/* ===== REAL MAP EMBED ===== */
-.modal-map-embed{margin:0 1.8rem 0.5rem;border-radius:14px;overflow:hidden;border:1px solid rgba(139,200,58,.2);height:200px;position:relative;}
+.modal-map-embed{margin:0 1.8rem 1rem;border-radius:14px;overflow:hidden;border:1px solid rgba(139,200,58,.2);height:200px;position:relative;}
 .modal-map-embed iframe{width:100%;height:100%;border:none;display:block;}
-.modal-map-link{display:flex;align-items:center;justify-content:center;gap:6px;margin:0 1.8rem 1rem;background:linear-gradient(135deg,#F0FDF4,#FFFBEB);border-radius:10px;padding:8px 12px;font-size:12px;color:#2D9158;text-decoration:none;border:1px solid rgba(139,200,58,.2);transition:all .2s;font-family:'DM Sans',sans-serif;font-weight:500;}
+.modal-map-link{display:flex;align-items:center;justify-content:center;gap:6px;margin:0 1.8rem .5rem;background:linear-gradient(135deg,#F0FDF4,#FFFBEB);border-radius:10px;padding:8px 12px;font-size:12px;color:#2D9158;text-decoration:none;border:1px solid rgba(139,200,58,.2);transition:all .2s;font-family:'DM Sans',sans-serif;font-weight:500;}
 .modal-map-link:hover{background:linear-gradient(135deg,#dcfce7,#fef9c3);box-shadow:0 4px 14px rgba(45,145,88,.1);color:#1e6b40;}
-
+.modal-map-link img{width:15px;height:15px;object-fit:contain;}
 .modal-acts{padding:0 1.8rem 1.8rem}
-.m-fb{background:linear-gradient(135deg,#1877f2,#0d5dbf);color:#fff;border:none;padding:11px 24px;border-radius:50px;font-size:13px;font-weight:500;cursor:pointer;width:100%;transition:all .2s;font-family:'DM Sans',sans-serif;}
-.m-fb:hover{opacity:.9;transform:translateY(-1px)}
+
+.m-fb{background:#fff;color:#1877f2;border:1.5px solid rgba(24,119,242,.3);padding:11px 24px;border-radius:50px;font-size:13px;font-weight:500;cursor:pointer;width:100%;transition:all .2s;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;}
+.m-fb:hover{background:#f0f6ff;border-color:#1877f2;}
+.m-fb svg{flex-shrink:0;}
+
+#modal-hrs-row,#modal-fee-row{display:none}
+#modal-hrs-row.visible,#modal-fee-row.visible{display:block}
+
+/* See More */
 .see-more-wrap{text-align:center;margin-top:2rem}
 .btn-see-more{background:#fff;color:#2D9158;border:2px solid rgba(75,173,113,.3);padding:12px 36px;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;box-shadow:0 4px 14px rgba(45,145,88,.08)}
 .btn-see-more:hover{background:linear-gradient(135deg,#4BAD71,#2D9158);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(45,145,88,.25);transform:translateY(-2px)}
-.card-loc{display:flex;align-items:center;gap:5px;}
-.card-loc::before{content:'📍';font-size:13px;line-height:1;}
 
-/* Shop card with image */
+/* Shop card */
 .shop-card{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.08);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;}
 .shop-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.13);}
 .shop-img{width:100%;height:140px;background-size:cover;background-position:center;background-color:#e8f5ec;flex-shrink:0;}
@@ -59,11 +133,11 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 .shop-type{font-size:12px;color:#888;font-family:'DM Sans',sans-serif;}
 
 @media(max-width:640px){
-  .modal-inner{grid-template-columns:1fr;grid-template-rows:240px auto}
-  .modal-photo{min-height:240px}
+  .modal-inner{grid-template-columns:1fr;grid-template-rows:260px auto}
+  .modal-photo{min-height:260px}
   .modal-body{padding:1.2rem 1.2rem .8rem}
-  .modal-map-embed{margin:0 1.2rem .4rem;height:160px;}
-  .modal-map-link{margin:0 1.2rem .8rem;}
+  .modal-map-embed{margin:0 1.2rem .5rem;height:140px;}
+  .modal-map-link{margin:0 1.2rem .5rem;}
   .modal-acts{padding:0 1.2rem 1.2rem}
 }
 </style>
@@ -134,86 +208,113 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 <!-- ===== WHERE TO STAY ===== -->
 <section class="sec alt" id="stay">
   <div class="sec-head">
-    <div class="eyebrow">Accommodations</div>
-    <h2 class="sec-title">Where to <em>Stay</em></h2>
-    <p class="sec-sub">Comfortable resorts, inns, and homestays — waiting for you in Laur.</p>
+    <div class="eyebrow anim-block anim-up">Accommodations</div>
+    <h2 class="sec-title anim-block anim-up delay-1">Where to <em>Stay</em></h2>
+    <p class="sec-sub anim-block anim-up delay-2">Comfortable resorts, inns, and homestays — waiting for you in Laur.</p>
   </div>
   <div class="grid3" id="stay-grid">
 
-    <article class="card"
-      onclick="openModal('Casa Celestine','Private Resort','Brgy. Siclong, Laur, Nueva Ecija',
+    <article class="card anim-block anim-fade delay-1"
+      onclick="openModal('Casa Celestine','Private Resort','Brgy. Siclong, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80','09317275295','15.570000,121.230000','Casa+Celestine+Siclong+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=75')"><span class="cbadge">Resort</span></div>
       <div class="card-body"><div class="card-title">Casa Celestine</div><div class="card-desc">A beautiful private resort in Brgy. Siclong — perfect for relaxation and events.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. Siclong</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. Siclong</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
-    <article class="card"
-      onclick="openModal('Green House Private Pool','Private Pool Resort','Brgy. San Josep, Laur, Nueva Ecija',
+    <article class="card anim-block anim-fade delay-2"
+      onclick="openModal('Green House Private Pool','Private Pool Resort','Brgy. San Josep, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80','09126147056','15.564997,121.240000','Green+House+Private+Pool+San+Josep+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=75')"><span class="cbadge">Resort</span></div>
       <div class="card-body"><div class="card-title">Green House Private Pool</div><div class="card-desc">Private pool resort in Brgy. San Josep — ideal for group outings and celebrations.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. San Josep</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. San Josep</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
-    <article class="card"
-      onclick="openModal('Sunsetpeak Nature Camp','Nature Camp','Brgy. Nauzon, Laur, Nueva Ecija',
+    <article class="card anim-block anim-fade delay-3"
+      onclick="openModal('Sunsetpeak Nature Camp','Nature Camp','Brgy. Nauzon, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&q=80','','15.580000,121.219997','Sunsetpeak+Nature+Camp+Nauzon+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=400&q=75')"><span class="cbadge">Camp</span></div>
       <div class="card-body"><div class="card-title">Sunsetpeak Nature Camp</div><div class="card-desc">Nature camping with stunning sunset views in Brgy. Nauzon.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. Nauzon</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. Nauzon</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card stay-hidden" style="display:none"
-      onclick="openModal('Sierran Resort','Resort','Brgy. Siclong, Laur, Nueva Ecija',
+      onclick="openModal('Sierran Resort','Resort','Brgy. Siclong, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1504233529578-6d46baba6d34?w=800&q=80','09484172382','15.574997,121.230000','Sierran+Resort+Siclong+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1504233529578-6d46baba6d34?w=400&q=75')"><span class="cbadge">Resort</span></div>
       <div class="card-body"><div class="card-title">Sierran Resort</div><div class="card-desc">A relaxing resort in Brgy. Siclong with mountain views.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. Siclong</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. Siclong</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card stay-hidden" style="display:none"
-      onclick="openModal('Mountain View Resort','Resort','Brgy. Siclong, Laur, Nueva Ecija',
+      onclick="openModal('Mountain View Resort','Resort','Brgy. Siclong, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80','09386293261','15.573000,121.231997','Mountain+View+Resort+Siclong+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&q=75')"><span class="cbadge">Resort</span></div>
       <div class="card-body"><div class="card-title">Mountain View Resort</div><div class="card-desc">Enjoy stunning mountain views and facilities in Brgy. Siclong.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. Siclong</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. Siclong</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card stay-hidden" style="display:none"
-      onclick="openModal('Camila Farm Resort','Farm Resort','Brgy. Betania, Laur, Nueva Ecija',
+      onclick="openModal('Camila Farm Resort','Farm Resort','Brgy. Betania, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&q=80','09176388948','15.560000,121.250000','Camila+Farm+Resort+Betania+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&q=75')"><span class="cbadge">Farm Resort</span></div>
       <div class="card-body"><div class="card-title">Camila Farm Resort</div><div class="card-desc">Farm resort in Brgy. Betania — nature, rest, and fresh air.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. Betania</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. Betania</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card stay-hidden" style="display:none"
-      onclick="openModal('Four Queens &amp; Private Resort','Private Resort','Brgy. Siclong, Laur, Nueva Ecija',
+      onclick="openModal('Four Queens &amp; Private Resort','Private Resort','Brgy. Siclong, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80','09199996710','15.571997,121.231000','Four+Queens+Resort+Siclong+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400&q=75')"><span class="cbadge">Resort</span></div>
       <div class="card-body"><div class="card-title">Four Queens &amp; Private Resort</div><div class="card-desc">Private resort in Brgy. Siclong — ideal for family gatherings and special occasions.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. Siclong</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. Siclong</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card stay-hidden" style="display:none"
-      onclick="openModal('Lelo\'s Mountain Resort','Mountain Resort','Brgy. San Isidro, Laur, Nueva Ecija',
+      onclick="openModal('Lelo\'s Mountain Resort','Mountain Resort','Brgy. San Isidro, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80','09171446213','15.550000,121.209997','Lelos+Mountain+Resort+San+Isidro+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=75')"><span class="cbadge">Resort</span></div>
       <div class="card-body"><div class="card-title">Lelo's Mountain Resort</div><div class="card-desc">Beautiful mountain resort in Brgy. San Isidro with stunning natural surroundings.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. San Isidro</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. San Isidro</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card stay-hidden" style="display:none"
-      onclick="openModal('Clareng\'s Farm Resort','Farm Resort','Brgy. Sagana, Laur, Nueva Ecija',
+      onclick="openModal('Clareng\'s Farm Resort','Farm Resort','Brgy. Sagana, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80','09105493608','15.570000,121.260000','Clarengs+Farm+Resort+Sagana+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=75')"><span class="cbadge">Farm Resort</span></div>
       <div class="card-body"><div class="card-title">Clareng's Farm Resort</div><div class="card-desc">A beautiful farm resort in Brgy. Sagana — true farm-to-table experience.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. Sagana</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. Sagana</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
   </div>
-  <div class="see-more-wrap" id="stay-more-wrap">
+  <div class="see-more-wrap anim-block anim-up" id="stay-more-wrap">
     <button class="btn-see-more" onclick="showMore('stay')">View More Resorts &amp; Stays &#8595;</button>
   </div>
 </section>
@@ -221,71 +322,91 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 <!-- ===== WHERE TO EAT ===== -->
 <section class="sec" id="eat">
   <div class="sec-head">
-    <div class="eyebrow">Dining in Laur</div>
-    <h2 class="sec-title">Where to <em>Eat</em></h2>
-    <p class="sec-sub">From local carinderia to full restaurants — taste the authentic flavors of Laur.</p>
+    <div class="eyebrow anim-block anim-up">Dining in Laur</div>
+    <h2 class="sec-title anim-block anim-up delay-1">Where to <em>Eat</em></h2>
+    <p class="sec-sub anim-block anim-up delay-2">From local carinderia to full restaurants — taste the authentic flavors of Laur.</p>
   </div>
   <div class="grid3" id="eat-grid">
 
-    <!-- Eat cards: no specific coords for food places, use town center as fallback -->
-    <article class="card"
-      onclick="openModal('Calle Dos Cafe','Cafe','Brgy. II, Laur, Nueva Ecija',
+    <article class="card anim-block anim-fade delay-1"
+      onclick="openModal('Calle Dos Cafe','Cafe','Brgy. II, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80','','15.566697,121.215000','Calle+Dos+Cafe+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&q=75')"><span class="cbadge">Cafe</span></div>
       <div class="card-body"><div class="card-title">Calle Dos Cafe</div><div class="card-desc">A cozy cafe in Brgy. II serving local coffee blends and light meals.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. II</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. II</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
-    <article class="card"
-      onclick="openModal('Mountain View Restaurant','Restaurant','Brgy. San Juan, Laur, Nueva Ecija',
+    <article class="card anim-block anim-fade delay-2"
+      onclick="openModal('Mountain View Restaurant','Restaurant','Brgy. San Juan, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80','','15.566697,121.206453','Mountain+View+Restaurant+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=75')"><span class="cbadge">Restaurant</span></div>
       <div class="card-body"><div class="card-title">Mountain View Restaurant</div><div class="card-desc">Enjoy Filipino cuisine with stunning mountain views in Brgy. San Juan.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. San Juan</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. San Juan</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
-    <article class="card"
-      onclick="openModal('Geng-Geng Kambingan','Kambingan / Grill','Brgy. San Josep, Laur, Nueva Ecija',
+    <article class="card anim-block anim-fade delay-3"
+      onclick="openModal('Geng-Geng Kambingan','Kambingan / Grill','Brgy. San Josep, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80','','15.564997,121.240000','Geng-Geng+Kambingan+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=75')"><span class="cbadge">Kambingan</span></div>
       <div class="card-body"><div class="card-title">Geng-Geng Kambingan</div><div class="card-desc">Authentic local kambingan dishes served fresh in Brgy. San Josep.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. San Josep</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. San Josep</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card eat-hidden" style="display:none"
-      onclick="openModal('Tanbayan','Eatery','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('Tanbayan','Eatery','Brgy. I, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&q=80','','15.566697,121.215000','Tanbayan+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=400&q=75')"><span class="cbadge">Eatery</span></div>
       <div class="card-body"><div class="card-title">Tanbayan</div><div class="card-desc">A popular local hangout and eatery in Brgy. I with home-cooked Filipino food.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. I</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. I</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card eat-hidden" style="display:none"
-      onclick="openModal('Riya\'s Foodies','Food Stall','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('Riya\'s Foodies','Food Stall','Brgy. I, Laur, Nueva Ecija','','',
         'images/riya1.webp','09690190210','15.566697,121.215000','Riyas+Foodies+Laur')">
       <div class="card-img" style="background-image:url('images/riya.webp')"><span class="cbadge">Food Stall</span></div>
       <div class="card-body"><div class="card-title">Riya's Foodies</div><div class="card-desc">Delicious, affordable eats for everyone in Brgy. I. Call ahead to order!</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. I</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. I</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card eat-hidden" style="display:none"
-      onclick="openModal('Café Noir','Cafe','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('Café Noir','Cafe','Brgy. I, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80','','15.566697,121.215000','Cafe+Noir+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400&q=75')"><span class="cbadge">Cafe</span></div>
       <div class="card-body"><div class="card-title">Café Noir</div><div class="card-desc">A chic café in Brgy. I offering quality coffee, drinks, and snacks.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. I</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. I</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
     <article class="card eat-hidden" style="display:none"
-      onclick="openModal('E&amp;J Food Park','Food Park','Brgy. San Vicente, Laur, Nueva Ecija',
+      onclick="openModal('E&amp;J Food Park','Food Park','Brgy. San Vicente, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1504233529578-6d46baba6d34?w=800&q=80','','15.566697,121.215000','EJ+Food+Park+Laur')">
       <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1504233529578-6d46baba6d34?w=400&q=75')"><span class="cbadge">Food Park</span></div>
       <div class="card-body"><div class="card-title">E&amp;J Food Park</div><div class="card-desc">A fun food park in San Vicente with a variety of local food stalls and drinks.</div></div>
-      <div class="card-foot"><span class="card-loc">Brgy. San Vicente</span><button class="view-btn">View</button></div>
+      <div class="card-foot">
+        <span class="card-loc"><img src="images/location.webp" alt="location"> Brgy. San Vicente</span>
+        <button class="view-btn">View</button>
+      </div>
     </article>
 
   </div>
-  <div class="see-more-wrap" id="eat-more-wrap">
+  <div class="see-more-wrap anim-block anim-up" id="eat-more-wrap">
     <button class="btn-see-more" onclick="showMore('eat')">View More Restaurants &amp; Eateries &#8595;</button>
   </div>
 </section>
@@ -293,11 +414,11 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 <!-- ===== SHOPS & STORES ===== -->
 <section class="sec alt" id="shops">
   <div class="sec-head">
-    <div class="eyebrow">Local Business Directory</div>
-    <h2 class="sec-title">Shops &amp; <em>Stores</em></h2>
-    <p class="sec-sub">Find souvenir shops, pharmacies, groceries, markets, and more in Laur.</p>
+    <div class="eyebrow anim-block anim-up">Local Business Directory</div>
+    <h2 class="sec-title anim-block anim-up delay-1">Shops &amp; <em>Stores</em></h2>
+    <p class="sec-sub anim-block anim-up delay-2">Find souvenir shops, pharmacies, groceries, markets, and more in Laur.</p>
   </div>
-  <div class="pills" role="group">
+  <div class="pills anim-block anim-up delay-3" role="group">
     <button class="pill on" onclick="filterCards(this,'shop','all')">All</button>
     <button class="pill" onclick="filterCards(this,'shop','souvenir')">Souvenir / Coop</button>
     <button class="pill" onclick="filterCards(this,'shop','grocery')">Grocery</button>
@@ -306,149 +427,148 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
   </div>
   <div class="grid4" id="shop-grid">
 
-    <!-- Souvenir / Coop — shop cards don't need coords, use town center -->
-    <div class="shop-card" data-cat="souvenir"
-      onclick="openModal('LAFACO','Laur Farmers Cooperative','Brgy. San Juan, Laur, Nueva Ecija',
+    <div class="shop-card anim-block anim-fade delay-1" data-cat="souvenir"
+      onclick="openModal('LAFACO','Laur Farmers Cooperative','Brgy. San Juan, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&q=80','','15.566697,121.215000','LAFACO+Laur+Farmers+Cooperative')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">LAFACO</div><div class="shop-type">Laur Farmers Coop · Brgy. San Juan</div></div>
     </div>
 
-    <div class="shop-card" data-cat="souvenir"
-      onclick="openModal('OFC','Store','Brgy. III, Laur, Nueva Ecija',
+    <div class="shop-card anim-block anim-fade delay-2" data-cat="souvenir"
+      onclick="openModal('OFC','Store','Brgy. III, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=800&q=80','','15.566697,121.215000','OFC+Store+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">OFC</div><div class="shop-type">Store · Brgy. III</div></div>
     </div>
 
-    <div class="shop-card" data-cat="souvenir"
-      onclick="openModal('De Dios','Store','Brgy. I, Laur, Nueva Ecija',
+    <div class="shop-card anim-block anim-fade delay-3" data-cat="souvenir"
+      onclick="openModal('De Dios','Store','Brgy. I, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=800&q=80','','15.566697,121.215000','De+Dios+Store+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">De Dios</div><div class="shop-type">Store · Brgy. I</div></div>
     </div>
 
-    <div class="shop-card" data-cat="souvenir"
-      onclick="openModal('Erlinda Store','Sari-Sari Store','Brgy. I, Laur, Nueva Ecija',
+    <div class="shop-card anim-block anim-fade delay-4" data-cat="souvenir"
+      onclick="openModal('Erlinda Store','Sari-Sari Store','Brgy. I, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=800&q=80','','15.566697,121.215000','Erlinda+Store+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">Erlinda Store</div><div class="shop-type">Store · Brgy. I</div></div>
     </div>
 
-    <div class="shop-card" data-cat="pharmacy"
-      onclick="openModal('Sicat Drugstore','Drugstore','Brgy. II, Laur, Nueva Ecija',
+    <div class="shop-card anim-block anim-fade delay-1" data-cat="pharmacy"
+      onclick="openModal('Sicat Drugstore','Drugstore','Brgy. II, Laur, Nueva Ecija','','',
         'images/sicat.webp','','15.566697,121.215000','Sicat+Drugstore+Laur')">
       <div class="shop-img" style="background-image:url('images/sicat.webp')"></div>
       <div class="shop-info"><div class="shop-name">Sicat Drugstore</div><div class="shop-type">Drugstore · Brgy. II</div></div>
     </div>
 
-    <div class="shop-card" data-cat="pharmacy"
-      onclick="openModal('E.N. Rivera Drug Store','Drugstore','Laur, Nueva Ecija',
+    <div class="shop-card anim-block anim-fade delay-2" data-cat="pharmacy"
+      onclick="openModal('E.N. Rivera Drug Store','Drugstore','Laur, Nueva Ecija','','',
         'images/IMG_0397.webp','','15.566697,121.215000','EN+Rivera+Drug+Store+Laur')">
       <div class="shop-img" style="background-image:url('images/IMG_0397.webp')"></div>
       <div class="shop-info"><div class="shop-name">E.N. Rivera Drug Store</div><div class="shop-type">Drugstore · Laur</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="pharmacy"
-      onclick="openModal('Bloom Pharmacy','Pharmacy','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('Bloom Pharmacy','Pharmacy','Brgy. I, Laur, Nueva Ecija','','',
         'images/bloomPharmacy.webp','','15.566697,121.215000','Bloom+Pharmacy+Laur')">
       <div class="shop-img" style="background-image:url('images/bloomPharmacy.webp')"></div>
       <div class="shop-info"><div class="shop-name">Bloom Pharmacy</div><div class="shop-type">Pharmacy · Brgy. I</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="pharmacy"
-      onclick="openModal('Fortis Pharmacy','Pharmacy','Brgy. II, Laur, Nueva Ecija',
+      onclick="openModal('Fortis Pharmacy','Pharmacy','Brgy. II, Laur, Nueva Ecija','','',
         'images/IMG_0413.webp','','15.566697,121.215000','Fortis+Pharmacy+Laur')">
       <div class="shop-img" style="background-image:url('images/IMG_0413.webp')"></div>
       <div class="shop-info"><div class="shop-name">Fortis Pharmacy</div><div class="shop-type">Pharmacy · Brgy. II</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="pharmacy"
-      onclick="openModal('Esteban Pharmacy and General Merchandise','Pharmacy &amp; General Merchandise','Brgy. II, Laur, Nueva Ecija',
+      onclick="openModal('Esteban Pharmacy and General Merchandise','Pharmacy &amp; General Merchandise','Brgy. II, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80','','15.566697,121.215000','Esteban+Pharmacy+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">Esteban Pharmacy</div><div class="shop-type">Pharmacy &amp; Gen. Merch. · Brgy. II</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="market"
-      onclick="openModal('Public Market','Public Market','Brgy. II, Laur, Nueva Ecija',
+      onclick="openModal('Public Market','Public Market','Brgy. II, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&q=80','','15.566697,121.215000','Public+Market+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">Public Market</div><div class="shop-type">Market · Brgy. II</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('O!save','Convenience Store','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('O!save','Convenience Store','Brgy. I, Laur, Nueva Ecija','','',
         'images/osave.webp','','15.566697,121.215000','Osave+Laur')">
       <div class="shop-img" style="background-image:url('images/osave.webp')"></div>
       <div class="shop-info"><div class="shop-name">O!save</div><div class="shop-type">Convenience Store · Brgy. I</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('Alfamart','Minimart','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('Alfamart','Minimart','Brgy. I, Laur, Nueva Ecija','','',
         'images/alfamart.webp','','15.566697,121.215000','Alfamart+Laur+Brgy+I')">
       <div class="shop-img" style="background-image:url('images/alfamart.webp')"></div>
       <div class="shop-info"><div class="shop-name">Alfamart</div><div class="shop-type">Minimart · Brgy. I</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('Alfamart','Minimart','Brgy. II, Laur, Nueva Ecija',
+      onclick="openModal('Alfamart','Minimart','Brgy. II, Laur, Nueva Ecija','','',
         'images/alfamart1.webp','','15.566697,121.215000','Alfamart+Laur+Brgy+II')">
       <div class="shop-img" style="background-image:url('images/alfamart1.webp')"></div>
       <div class="shop-info"><div class="shop-name">Alfamart</div><div class="shop-type">Minimart · Brgy. II</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('7-Eleven','Convenience Store','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('7-Eleven','Convenience Store','Brgy. I, Laur, Nueva Ecija','','',
         'images/7111.webp','','15.566697,121.215000','7-Eleven+Laur')">
       <div class="shop-img" style="background-image:url('images/shop/711.webp')"></div>
       <div class="shop-info"><div class="shop-name">7-Eleven</div><div class="shop-type">Convenience Store · Brgy. I</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('High Fly Consumer Good Store','Grocery Store','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('High Fly Consumer Good Store','Grocery Store','Brgy. I, Laur, Nueva Ecija','','',
         'images/shop/highfly1.webp','','15.566697,121.215000','High+Fly+Store+Laur')">
       <div class="shop-img" style="background-image:url('images/shop/highfly.webp')"></div>
       <div class="shop-info"><div class="shop-name">High Fly Store</div><div class="shop-type">Consumer Goods · Brgy. I</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('Jac-Ma Grocery Store','Grocery','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('Jac-Ma Grocery Store','Grocery','Brgy. I, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=800&q=80','','15.566697,121.215000','Jac-Ma+Grocery+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1604719312566-8912e9c8a213?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">Jac-Ma Grocery</div><div class="shop-type">Grocery Store · Brgy. I</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('Producers Bank','Bank','Brgy. II, Laur, Nueva Ecija',
+      onclick="openModal('Producers Bank','Bank','Brgy. II, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&q=80','','15.566697,121.215000','Producers+Bank+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">Producers Bank</div><div class="shop-type">Bank · Brgy. II</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('Chooks to Go','Food Shop','Brgy. II, Laur, Nueva Ecija',
+      onclick="openModal('Chooks to Go','Food Shop','Brgy. II, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80','','15.566697,121.215000','Chooks+to+Go+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">Chooks to Go</div><div class="shop-type">Food Shop · Brgy. II</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('Tatang\'s Lechon / Sisig','Food Stall','Brgy. I, Laur, Nueva Ecija',
+      onclick="openModal('Tatang\'s Lechon / Sisig','Food Stall','Brgy. I, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80','','15.566697,121.215000','Tatangs+Lechon+Sisig+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">Tatang's Lechon/Sisig</div><div class="shop-type">Food Stall · Brgy. I</div></div>
     </div>
 
     <div class="shop-card shop-hidden" style="display:none" data-cat="grocery"
-      onclick="openModal('James and Josh Lechon Manok Sisig','Food Stall','Brgy. II, Laur, Nueva Ecija',
+      onclick="openModal('James and Josh Lechon Manok Sisig','Food Stall','Brgy. II, Laur, Nueva Ecija','','',
         'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80','','15.566697,121.215000','James+Josh+Lechon+Manok+Laur')">
       <div class="shop-img" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=75')"></div>
       <div class="shop-info"><div class="shop-name">James &amp; Josh Lechon Manok</div><div class="shop-type">Food Stall · Brgy. II</div></div>
     </div>
 
   </div>
-  <div class="see-more-wrap" id="shop-more-wrap">
+  <div class="see-more-wrap anim-block anim-up" id="shop-more-wrap">
     <button class="btn-see-more" onclick="showMore('shop')">View More Shops &amp; Stores &#8595;</button>
   </div>
 </section>
@@ -461,8 +581,12 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
       <span>Official Laur Tourism Website</span>
       <p>Promoting the natural beauty, culture, and heritage of Laur, Nueva Ecija, Philippines.</p>
       <div class="social-row">
-        <a href="https://www.facebook.com/profile.php?id=61580579025346" class="social-btn" target="_blank" rel="noopener">FB</a>
-        <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener">YT</a>
+        <a href="https://www.facebook.com/profile.php?id=61580579025346" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="images/facebook.webp" alt="Facebook">
+        </a>
+        <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener" aria-label="YouTube">
+          <img src="images/youtube.webp" alt="YouTube">
+        </a>
       </div>
     </div>
     <nav class="footer-col"><h4>Explore</h4><a href="attractions.html">Attractions</a><a href="visit.html#stay">Where to Stay</a><a href="visit.html#eat">Where to Eat</a><a href="visit.html#shops">Shops &amp; Stores</a></nav>
@@ -475,15 +599,25 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
   </div>
 </footer>
 
-<!-- ===== MODAL ===== -->
+<!-- ===== MODAL — identical to index.html ===== -->
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
   <div class="modal-box">
+
     <div class="modal-hd">
-      <div><h3 id="modal-title">—</h3><small id="modal-type">—</small></div>
-      <button class="modal-close" onclick="closeModalBtn()">&#x2715;</button>
+      <div class="modal-hd-left"></div>
+      <div class="modal-hd-center">
+        <h3 id="modal-title">—</h3>
+        <small id="modal-type">—</small>
+      </div>
+      <div class="modal-hd-right">
+        <button class="modal-close" onclick="closeModalBtn()">&#x2715;</button>
+      </div>
     </div>
+
     <div class="modal-inner">
-      <div class="modal-photo" id="modal-photo"></div>
+      <div class="modal-photo" id="modal-photo-wrap">
+        <img id="modal-photo-img" src="" alt="Photo">
+      </div>
       <div class="modal-right">
         <div class="modal-body">
           <div class="mrow"><div class="mlbl">Location</div><div class="mval" id="modal-loc">—</div></div>
@@ -491,23 +625,33 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
             <div class="mlbl">Contact Number</div>
             <div class="mval" id="modal-contact">—</div>
           </div>
+          <div class="mrow" id="modal-hrs-row">
+            <div class="mlbl">Oras</div>
+            <div class="mval" id="modal-hrs">—</div>
+          </div>
+          <div class="mrow" id="modal-fee-row">
+            <div class="mlbl">Entrance Fee</div>
+            <div class="mval" id="modal-fee">—</div>
+          </div>
         </div>
-
-        <!-- REAL GOOGLE MAPS EMBED -->
         <div class="modal-map-embed">
           <iframe id="modal-map-iframe"
-            src="about:blank"
+            src="https://maps.google.com/maps?q=15.557711,121.226314&z=15&output=embed"
             allowfullscreen loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Location Map">
           </iframe>
         </div>
-        <a id="modal-map-link" class="modal-map-link" href="#" target="_blank" rel="noopener">
-          📍 Open in Google Maps
+        <a id="modal-map-link" class="modal-map-link" href="https://www.google.com/maps?q=15.557711,121.226314" target="_blank" rel="noopener">
+          <img src="images/location.webp" alt=""> Buksan sa Google Maps
         </a>
-
         <div class="modal-acts">
-          <button class="m-fb" onclick="window.open('https://www.facebook.com/profile.php?id=61580579025346','_blank')">📘 Facebook Page</button>
+          <button class="m-fb" onclick="window.open('https://www.facebook.com/profile.php?id=61580579025346','_blank')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877f2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12.073C24 5.406 18.627 0 12 0S0 5.406 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+            </svg>
+            View more sa FB Page
+          </button>
         </div>
       </div>
     </div>
@@ -516,35 +660,47 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 
 <script src="script.js"></script>
 <script>
+/* =====================================================
+   SHOW MORE
+   ===================================================== */
 function showMore(section) {
   document.querySelectorAll('.' + section + '-hidden').forEach(function(el) {
     el.style.display = '';
     el.classList.remove(section + '-hidden');
+    el.classList.add('anim-block','anim-fade');
+    observer.observe(el);
   });
   var w = document.getElementById(section + '-more-wrap');
   if (w) w.style.display = 'none';
 }
 
-/**
- * openModal(title, type, loc, img, contact, coords, searchQuery)
- */
-function openModal(title, type, loc, img, contact, coords, searchQuery) {
+/* =====================================================
+   MODAL
+   openModal(title, type, loc, hrs, fee, img, contact, coords, searchQuery)
+   ===================================================== */
+function openModal(title,type,loc,hrs,fee,img,contact,coords,searchQuery){
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-type').textContent  = type;
   document.getElementById('modal-loc').textContent   = loc;
-  document.getElementById('modal-photo').style.backgroundImage = "url('" + img + "')";
 
-  var cr = document.getElementById('modal-contact-row');
-  if (contact) {
-    document.getElementById('modal-contact').textContent = contact;
-    cr.style.display = 'block';
-  } else {
-    cr.style.display = 'none';
-  }
+  var photoImg = document.getElementById('modal-photo-img');
+  photoImg.src = img;
+  photoImg.alt = title;
 
-  // Google Maps embed
-  var latLng = coords || '15.566697,121.215000'; // fallback: central Laur
-  var zoom   = 16;
+  var contactRow = document.getElementById('modal-contact-row');
+  if(contact){ document.getElementById('modal-contact').textContent = contact; contactRow.style.display = 'block'; }
+  else{ contactRow.style.display = 'none'; }
+
+  var hrsRow = document.getElementById('modal-hrs-row');
+  if(hrs){ document.getElementById('modal-hrs').textContent = hrs; hrsRow.classList.add('visible'); }
+  else{ hrsRow.classList.remove('visible'); }
+
+  var feeRow = document.getElementById('modal-fee-row');
+  if(fee){ document.getElementById('modal-fee').textContent = fee; feeRow.classList.add('visible'); }
+  else{ feeRow.classList.remove('visible'); }
+
+  var latLng = coords || '15.566697,121.215000';
+  var zoom   = coords ? 16 : 14;
   document.getElementById('modal-map-iframe').src =
     'https://maps.google.com/maps?q=' + latLng + '&z=' + zoom + '&t=m&output=embed&iwloc=near';
   document.getElementById('modal-map-link').href =
@@ -554,12 +710,31 @@ function openModal(title, type, loc, img, contact, coords, searchQuery) {
   document.body.style.overflow = 'hidden';
 }
 
-function closeModalBtn() {
+function closeModalBtn(){
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
 }
-function closeModal(e) { if (e.target.id === 'modal') closeModalBtn(); }
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModalBtn(); });
+function closeModal(e){ if(e.target.id === 'modal') closeModalBtn(); }
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModalBtn(); });
+
+/* =====================================================
+   SCROLL ANIMATIONS
+   ===================================================== */
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      if(entry.target.classList.contains('eyebrow')){
+        entry.target.classList.add('line-visible');
+      }
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.14});
+
+document.querySelectorAll('.anim-block').forEach(function(el){
+  observer.observe(el);
+});
 </script>
 </body>
 </html>
