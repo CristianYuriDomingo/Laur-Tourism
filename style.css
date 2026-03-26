@@ -9,18 +9,11 @@ button{cursor:pointer;font-family:inherit}
 .nav{background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(75,173,113,.12);padding:0 6rem;height:70px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
 .nav.scrolled{box-shadow:0 4px 24px rgba(45,145,88,.1)}
 .nav-logo{display:flex;align-items:center;gap:12px}
-
-/* Logo image — replace the placeholder seal with your own image */
 .nav-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 4px 12px rgba(45,145,88,.25)}
-
-/* Fallback placeholder seal (shown when no real logo image is used) */
 .nav-seal{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#4BAD71,#2D9158);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 4px 12px rgba(45,145,88,.25)}
-
-/* Nav brand text — tightened line spacing */
 .nav-brand{display:flex;flex-direction:column;gap:1px}
 .nav-brand strong{display:block;font-size:16px;font-weight:600;color:#2D9158;line-height:1.1}
 .nav-brand span{font-size:10px;color:#aaa;letter-spacing:1px;text-transform:uppercase;line-height:1.1}
-
 .nav-links{display:flex;gap:2.2rem;align-items:center}
 .nav-links a{font-size:14px;color:#555;font-weight:400;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:#2D9158;font-weight:500}
@@ -38,6 +31,16 @@ button{cursor:pointer;font-family:inherit}
 .mobile-links a{display:block;padding:1rem 0;font-size:16px;color:#444;border-bottom:1px solid rgba(75,173,113,.1)}
 .mobile-links a:hover{color:#2D9158}
 .mobile-fb{display:block;margin-top:2rem;background:linear-gradient(135deg,#4BAD71,#2D9158);color:#fff;text-align:center;padding:1rem;border-radius:50px;font-size:14px;font-weight:500}
+
+/* ===== BANNER STRIP ===== */
+.banner-strip{
+  width:100%;
+  height:55px;
+  background-image:url('banner.webp');
+  background-repeat:repeat-x;
+  background-size:auto 55px;
+  background-position:left center;
+}
 
 /* HERO */
 .hero{position:relative;height:580px;overflow:hidden;background:#0a2a14}
@@ -71,10 +74,6 @@ button{cursor:pointer;font-family:inherit}
 .stat:last-child{border:none}
 .stat-n{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;background:linear-gradient(135deg,#2D9158,#8BC83A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
 .stat-l{font-size:10px;color:#aaa;margin-top:2px;text-transform:uppercase;letter-spacing:.8px}
-
-/* BANNER STRIP */
-.banner-strip{width:100%;height:72px;overflow:hidden;line-height:0;display:block}
-.banner-strip img{width:100%;height:72px;object-fit:cover;object-position:center top;display:block}
 
 /* SECTIONS */
 .sec{padding:5rem 6rem}
@@ -283,7 +282,9 @@ button{cursor:pointer;font-family:inherit}
   .page-hero{height:240px}.page-hero-content{left:1.5rem;right:1.5rem;bottom:1.5rem}
   .page-hero-content h1{font-size:1.8rem}.chat-popup{width:270px;right:-10px}
   .emergency-grid{grid-template-columns:1fr}.arr{display:none}
+  .banner-strip{height:45px;background-size:auto 45px}
 }
 @media(max-width:480px){
   .grid4{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.sec-title{font-size:1.8rem}
+  .banner-strip{height:38px;background-size:auto 38px}
 }
