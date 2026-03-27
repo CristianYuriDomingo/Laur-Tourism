@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Photo gallery of Laur, Nueva Ecija — nature, culture, food, and people. Close-up and wide shots of every location.">
+<meta name="description" content="Photo gallery of Laur, Nueva Ecija — nature, culture, food, and people.">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Photo Gallery — Laur, Nueva Ecija | Official Tourism Website">
 <link rel="canonical" href="https://laurtourism.vercel.app/gallery.html">
@@ -15,70 +15,104 @@
 <style>
 *,body{font-family:'DM Sans',sans-serif;}
 .nav-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;}
-.nav-brand strong,.nav-brand span,.nav-links a,.dropdown-menu a,.mobile-links a,.mobile-fb{font-family:'DM Sans',sans-serif;}
-h1,h2,h3,.sec-title,.footer-brand strong,.footer-col h4{font-family:'Playfair Display',serif!important;letter-spacing:0;}
-
-/* ===== SOCIAL ICONS (footer) ===== */
+h1,h2,h3,.sec-title,.footer-brand strong,.footer-col h4{font-family:'Playfair Display',serif!important;}
 .social-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;overflow:hidden;background:#f0f0f0;transition:opacity .2s;}
 .social-btn:hover{opacity:.8;}
 .social-btn img{width:22px;height:22px;object-fit:contain;display:block;}
 
-/* =====================================================
-   SCROLL / ENTRANCE ANIMATIONS
-   ===================================================== */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideLeft {
-  from { opacity: 0; transform: translateX(-32px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideRight {
-  from { opacity: 0; transform: translateX(32px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(.88); }
-  to   { opacity: 1; transform: scale(1); }
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes lbIn{from{opacity:0}to{opacity:1}}
+@keyframes imgPop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.anim-block{opacity:0;}
+.anim-up.in-view{animation:fadeUp .65s both cubic-bezier(.22,.68,0,1.05);}
+.anim-fade.in-view{animation:fadeIn .65s both cubic-bezier(.22,.68,0,1.05);}
+.delay-1{animation-delay:80ms!important;}.delay-2{animation-delay:160ms!important;}
+.delay-3{animation-delay:240ms!important;}.delay-4{animation-delay:320ms!important;}
 
-.anim-block { opacity: 0; }
+.eyebrow{position:relative;display:inline-block;}
+.eyebrow::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:1.5px;background:linear-gradient(90deg,#2D9158,#8BC83A);transform:scaleX(0);transform-origin:left;transition:transform .55s ease .25s;}
+.eyebrow.line-visible::after{transform:scaleX(1);}
 
-.anim-up.in-view    { animation: fadeUp   .65s both cubic-bezier(.22,.68,0,1.05); }
-.anim-fade.in-view  { animation: fadeIn   .65s both cubic-bezier(.22,.68,0,1.05); }
-.anim-left.in-view  { animation: slideLeft  .7s both cubic-bezier(.22,.68,0,1.05); }
-.anim-right.in-view { animation: slideRight .7s both cubic-bezier(.22,.68,0,1.05); }
-.anim-scale.in-view { animation: scaleIn  .55s both cubic-bezier(.22,.68,0,1.05); }
+/* ── GALLERY GRID ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:1.5rem;}
+.gimg{border-radius:16px;overflow:hidden;cursor:pointer;position:relative;background:#d4eadb;aspect-ratio:1/1;}
+.gimg:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;}
+.gimg-inner{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s cubic-bezier(.25,.46,.45,.94);}
+.gimg:hover .gimg-inner{transform:scale(1.08);}
+.gimg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,40,20,.75) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px;}
+.gimg:hover .gimg-overlay{opacity:1;}
+.gimg-caption{font-size:13px;color:#fff;font-weight:500;letter-spacing:.2px;}
+/* zoom pill */
+.gimg-pill{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:5px 12px 5px 8px;display:flex;align-items:center;gap:6px;opacity:0;transition:opacity .25s;font-size:11px;color:#fff;font-weight:500;letter-spacing:.3px;}
+.gimg-pill svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;}
+.gimg:hover .gimg-pill{opacity:1;}
 
-.delay-1 { animation-delay:  80ms !important; }
-.delay-2 { animation-delay: 160ms !important; }
-.delay-3 { animation-delay: 240ms !important; }
-.delay-4 { animation-delay: 320ms !important; }
-.delay-5 { animation-delay: 400ms !important; }
-.delay-6 { animation-delay: 480ms !important; }
+/* pills centered */
+.pills{justify-content:center;}
 
-.eyebrow { position: relative; display: inline-block; }
-.eyebrow::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -3px;
-  width: 100%; height: 1.5px;
-  background: linear-gradient(90deg, #2D9158, #8BC83A);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .55s ease .25s;
+/* ── LIGHTBOX ── */
+.lb{display:none;position:fixed;inset:0;z-index:2000;background:rgba(4,14,8,.96);flex-direction:column;align-items:center;justify-content:center;}
+.lb.open{display:flex;animation:lbIn .2s ease;}
+
+/* top bar */
+.lb-top{position:absolute;top:0;left:0;right:0;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(0,0,0,.5),transparent);z-index:10;}
+.lb-tag{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;}
+.lb-close{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.lb-close:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);}
+
+/* image stage */
+.lb-stage{flex:1;display:flex;align-items:center;justify-content:center;width:100%;padding:70px 80px;position:relative;}
+/* photo wrapper — holds image + overlay text */
+.lb-photo-wrap{position:relative;width:100%;max-width:900px;height:calc(100vh - 180px);border-radius:12px;overflow:hidden;animation:imgPop .3s ease;}
+.lb-photo-div{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#0a2a14;transition:background-image .05s;}
+/* gradient scrim for text legibility */
+.lb-photo-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(4,18,10,.82) 0%,rgba(4,18,10,.18) 45%,transparent 70%);border-radius:12px;pointer-events:none;}
+/* overlay text on image */
+.lb-img-text{position:absolute;bottom:0;left:0;right:0;z-index:5;padding:28px 28px 24px;animation:fadeUp .35s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.lb-img-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(139,200,58,.22);border:1px solid rgba(139,200,58,.45);color:#a8e060;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:10px;font-weight:500;}
+.lb-img-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:6px;}
+.lb-img-desc{font-size:13px;color:rgba(255,255,255,.62);line-height:1.6;max-width:480px;}
+
+/* side arrows */
+.lb-arr{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .22s;user-select:none;backdrop-filter:blur(4px);}
+.lb-arr:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.3);transform:translateY(-50%) scale(1.08);}
+.lb-prev{left:20px;}.lb-next{right:20px;}
+
+/* bottom bar */
+.lb-bottom{position:absolute;bottom:0;left:0;right:0;padding:24px 32px;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);display:flex;align-items:center;justify-content:space-between;}
+.lb-caption{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:.2px;}
+.lb-dots{display:flex;gap:6px;align-items:center;}
+.lb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .25s;border:none;cursor:pointer;padding:0;}
+.lb-dot.on{width:20px;border-radius:50px;background:#8BC83A;}
+.lb-count{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:1px;}
+
+/* thumb strip */
+.lb-thumbs{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);display:flex;gap:6px;max-width:calc(100vw - 60px);overflow-x:auto;padding:4px;scrollbar-width:none;}
+.lb-thumbs::-webkit-scrollbar{display:none;}
+.lb-thumb{width:42px;height:42px;border-radius:8px;background-size:cover;background-position:center;cursor:pointer;opacity:.4;transition:all .2s;border:2px solid transparent;flex-shrink:0;}
+.lb-thumb.on{opacity:1;border-color:#8BC83A;}
+.lb-thumb:hover{opacity:.8;}
+
+/* responsive */
+@media(max-width:768px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .gimg:first-child{grid-column:span 2;}
+  .lb-stage{padding:60px 60px;}
+  .lb-arr{width:40px;height:40px;font-size:20px;}
+  .lb-prev{left:8px;}.lb-next{right:8px;}
+  .lb-caption{font-size:15px;}
+  .lb-thumbs{display:none;}
+  .lb-bottom{padding:16px 20px;}
+  .lb-img-title{font-size:20px;}
+  .lb-img-text{padding:20px 18px 18px;}
 }
-.eyebrow.line-visible::after { transform: scaleX(1); }
 </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- NAV -->
 <nav class="nav" id="navbar">
   <div class="nav-logo">
     <img src="images/tourism-logo.png" alt="Laur Tourism Logo" class="nav-logo-img">
@@ -108,7 +142,7 @@ h1,h2,h3,.sec-title,.footer-brand strong,.footer-col h4{font-family:'Playfair Di
   <button class="hamburger" onclick="toggleMobile()" id="ham"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- ===== MOBILE MENU ===== -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-head">
     <div class="nav-logo"><img src="images/tourism-logo.png" alt="Laur Tourism Logo" class="nav-logo-img"><div class="nav-brand"><strong>Laur Tourism</strong><span>Nueva Ecija</span></div></div>
@@ -125,27 +159,27 @@ h1,h2,h3,.sec-title,.footer-brand strong,.footer-col h4{font-family:'Playfair Di
   <a href="https://www.facebook.com/profile.php?id=61580579025346" class="mobile-fb" target="_blank" rel="noopener">Find us on Facebook</a>
 </div>
 
-<!-- ===== PAGE HERO ===== -->
+<!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-img" style="background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1400&q=75')"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <div class="eyebrow" style="color:#E8A838">Photo Gallery</div>
     <h1>Beautiful <em>Laur</em></h1>
-    <p>Close-up and wide shots of every location in Laur, Nueva Ecija.</p>
+    <p>Discover the landscapes, culture, and flavors of Laur, Nueva Ecija.</p>
   </div>
 </div>
 
-<!-- ===== BANNER STRIP ===== -->
 <div class="banner-strip"></div>
 
-<!-- ===== GALLERY ===== -->
+<!-- GALLERY SECTION -->
 <section class="sec alt">
   <div class="sec-head">
     <div class="eyebrow anim-block anim-up">Gallery</div>
     <h2 class="sec-title anim-block anim-up delay-1">Explore Through <em>Photos</em></h2>
-    <p class="sec-sub anim-block anim-up delay-2">Each location features close-up and wide shots — 8 photos per page.</p>
+    <p class="sec-sub anim-block anim-up delay-2">Click any photo to view it in full.</p>
   </div>
+
   <div class="pills anim-block anim-up delay-3" role="group">
     <button class="pill on" onclick="filterGallery(this,'all')">All</button>
     <button class="pill" onclick="filterGallery(this,'natural')">Natural</button>
@@ -153,27 +187,92 @@ h1,h2,h3,.sec-title,.footer-brand strong,.footer-col h4{font-family:'Playfair Di
     <button class="pill" onclick="filterGallery(this,'culture')">Culture</button>
     <button class="pill" onclick="filterGallery(this,'food')">Food</button>
   </div>
+
   <div class="gallery-grid" id="galleryGrid">
-    <div class="gimg anim-block anim-fade delay-1" data-cat="natural"><div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1504233529578-6d46baba6d34?w=700&q=75')"></div><div class="gimg-overlay"><span class="gimg-caption">Sierra Madre — wide shot</span></div></div>
-    <div class="gimg anim-block anim-fade delay-2" data-cat="natural"><div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=75');min-height:130px;"></div><div class="gimg-overlay"><span class="gimg-caption">Forest — close-up</span></div></div>
-    <div class="gimg anim-block anim-fade delay-3" data-cat="natural"><div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=75');min-height:130px;"></div><div class="gimg-overlay"><span class="gimg-caption">River — wide shot</span></div></div>
-    <div class="gimg anim-block anim-fade delay-4" data-cat="natural"><div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&q=75');min-height:130px;"></div><div class="gimg-overlay"><span class="gimg-caption">Nature — close-up</span></div></div>
-    <div class="gimg anim-block anim-fade delay-1" data-cat="manmade"><div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400&q=75');min-height:130px;"></div><div class="gimg-overlay"><span class="gimg-caption">Heritage Church — wide shot</span></div></div>
-    <div class="gimg anim-block anim-fade delay-2" data-cat="culture"><div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=75');min-height:130px;"></div><div class="gimg-overlay"><span class="gimg-caption">Local food — close-up</span></div></div>
-    <div class="gimg anim-block anim-fade delay-3" data-cat="food"><div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=75');min-height:130px;"></div><div class="gimg-overlay"><span class="gimg-caption">Local restaurant — wide shot</span></div></div>
-    <div class="gimg anim-block anim-fade delay-4" data-cat="natural"><div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=400&q=75');min-height:130px;"></div><div class="gimg-overlay"><span class="gimg-caption">Farmland — wide shot</span></div></div>
+    <div class="gimg anim-block anim-fade delay-1" data-cat="natural" data-caption="Sierra Madre" data-cat-label="Natural" data-desc="A breathtaking view of the Sierra Madre mountain range, the longest mountain range in the Philippines.">
+      <div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1504233529578-6d46baba6d34?w=700&q=75')"></div>
+      <div class="gimg-overlay"><span class="gimg-caption">Sierra Madre</span></div>
+      <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
+    </div>
+    <div class="gimg anim-block anim-fade delay-2" data-cat="natural" data-caption="Forest" data-cat-label="Natural" data-desc="Dense forest canopy sheltering the rich biodiversity found throughout Laur's protected areas.">
+      <div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=75')"></div>
+      <div class="gimg-overlay"><span class="gimg-caption">Forest</span></div>
+      <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
+    </div>
+    <div class="gimg anim-block anim-fade delay-3" data-cat="natural" data-caption="River" data-cat-label="Natural" data-desc="Crystal-clear river waters flowing through Laur's scenic landscape, perfect for nature lovers.">
+      <div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&q=75')"></div>
+      <div class="gimg-overlay"><span class="gimg-caption">River</span></div>
+      <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
+    </div>
+    <div class="gimg anim-block anim-fade delay-4" data-cat="natural" data-caption="Nature" data-cat-label="Natural" data-desc="The untouched natural beauty of Laur, where wildlife thrives in its natural habitat.">
+      <div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&q=75')"></div>
+      <div class="gimg-overlay"><span class="gimg-caption">Nature</span></div>
+      <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
+    </div>
+    <div class="gimg anim-block anim-fade delay-1" data-cat="manmade" data-caption="Heritage Church" data-cat-label="Man-made" data-desc="A centuries-old heritage church standing as a testament to Laur's rich colonial and cultural history.">
+      <div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400&q=75')"></div>
+      <div class="gimg-overlay"><span class="gimg-caption">Heritage Church</span></div>
+      <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
+    </div>
+    <div class="gimg anim-block anim-fade delay-2" data-cat="culture" data-caption="Local Culture" data-cat-label="Culture" data-desc="Vibrant traditions and festivals that celebrate the unique cultural identity of the people of Laur.">
+      <div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=75')"></div>
+      <div class="gimg-overlay"><span class="gimg-caption">Local Culture</span></div>
+      <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
+    </div>
+    <div class="gimg anim-block anim-fade delay-3" data-cat="food" data-caption="Local Restaurant" data-cat-label="Food" data-desc="Authentic local cuisine served fresh, showcasing the flavors and culinary traditions of Nueva Ecija.">
+      <div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=75')"></div>
+      <div class="gimg-overlay"><span class="gimg-caption">Local Restaurant</span></div>
+      <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
+    </div>
+    <div class="gimg anim-block anim-fade delay-4" data-cat="natural" data-caption="Farmland" data-cat-label="Natural" data-desc="Vast rice paddies and farmlands that define Laur's agricultural heritage as part of the rice granary of the Philippines.">
+      <div class="gimg-inner" style="background-image:url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=400&q=75')"></div>
+      <div class="gimg-overlay"><span class="gimg-caption">Farmland</span></div>
+      <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
+    </div>
   </div>
+
   <nav class="pagination anim-block anim-up">
     <button class="pg-btn" onclick="changePage(-1)">&#8249;</button>
     <button class="pg-btn active" onclick="goPage(1)" aria-current="page">1</button>
     <button class="pg-btn" onclick="goPage(2)">2</button>
     <button class="pg-btn" onclick="goPage(3)">3</button>
-    <span class="pg-info" id="pg-info">Page 1 of 3 &mdash; 8 photos per page</span>
     <button class="pg-btn" onclick="changePage(1)">&#8250;</button>
   </nav>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ── LIGHTBOX ── -->
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <!-- Top bar -->
+  <div class="lb-top">
+    <span class="lb-tag">Laur, Nueva Ecija</span>
+    <button class="lb-close" onclick="closeLb()" aria-label="Close">&#x2715;</button>
+  </div>
+
+  <!-- Image stage -->
+  <div class="lb-stage">
+    <button class="lb-arr lb-prev" onclick="lbNav(-1)" aria-label="Previous">&#8249;</button>
+    <div class="lb-photo-wrap">
+      <div class="lb-photo-div" id="lbPhoto"></div>
+      <div class="lb-img-text" id="lbImgText">
+        <div class="lb-img-badge" id="lbBadge"></div>
+        <div class="lb-img-title" id="lbTitle"></div>
+        <div class="lb-img-desc" id="lbDesc"></div>
+      </div>
+    </div>
+    <button class="lb-arr lb-next" onclick="lbNav(1)" aria-label="Next">&#8250;</button>
+  </div>
+
+  <!-- Thumbnail strip -->
+  <div class="lb-thumbs" id="lbThumbs"></div>
+
+  <!-- Bottom bar -->
+  <div class="lb-bottom">
+    <span class="lb-caption" id="lbCaption"></span>
+    <span class="lb-count" id="lbCount"></span>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-brand">
@@ -181,12 +280,8 @@ h1,h2,h3,.sec-title,.footer-brand strong,.footer-col h4{font-family:'Playfair Di
       <span>Official Laur Tourism Website</span>
       <p>Promoting the natural beauty, culture, and heritage of Laur, Nueva Ecija, Philippines.</p>
       <div class="social-row">
-        <a href="https://www.facebook.com/profile.php?id=61580579025346" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook">
-          <img src="images/facebook.webp" alt="Facebook">
-        </a>
-        <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener" aria-label="YouTube">
-          <img src="images/youtube.webp" alt="YouTube">
-        </a>
+        <a href="https://www.facebook.com/profile.php?id=61580579025346" class="social-btn" target="_blank" rel="noopener" aria-label="Facebook"><img src="images/facebook.webp" alt="Facebook"></a>
+        <a href="https://youtube.com" class="social-btn" target="_blank" rel="noopener" aria-label="YouTube"><img src="images/youtube.webp" alt="YouTube"></a>
       </div>
     </div>
     <nav class="footer-col">
@@ -217,20 +312,105 @@ h1,h2,h3,.sec-title,.footer-brand strong,.footer-col h4{font-family:'Playfair Di
 
 <script src="script.js"></script>
 <script>
+// Scroll animations
 (function(){
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        if(entry.target.classList.contains('eyebrow')){
-          entry.target.classList.add('line-visible');
-        }
-        observer.unobserve(entry.target);
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        if(e.target.classList.contains('eyebrow')) e.target.classList.add('line-visible');
+        obs.unobserve(e.target);
       }
     });
   },{threshold:0.14});
-  document.querySelectorAll('.anim-block').forEach(function(el){ observer.observe(el); });
+  document.querySelectorAll('.anim-block').forEach(function(el){ obs.observe(el); });
 })();
+
+var allImgs = Array.from(document.querySelectorAll('#galleryGrid .gimg'));
+var visible = allImgs.slice();
+var lbIdx = 0;
+
+function attachClicks(){
+  visible.forEach(function(el,i){ el.onclick = function(){ openLb(i); }; });
+}
+attachClicks();
+
+function filterGallery(btn, cat){
+  document.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('on'); });
+  btn.classList.add('on');
+  visible = [];
+  allImgs.forEach(function(el){
+    var show = cat==='all' || el.dataset.cat===cat;
+    el.style.display = show ? '' : 'none';
+    if(show) visible.push(el);
+  });
+  attachClicks();
+}
+
+function buildThumbs(){
+  var strip = document.getElementById('lbThumbs');
+  strip.innerHTML = '';
+  visible.forEach(function(el,i){
+    var bg = el.querySelector('.gimg-inner').style.backgroundImage;
+    var t = document.createElement('div');
+    t.className = 'lb-thumb' + (i===lbIdx?' on':'');
+    t.style.backgroundImage = bg;
+    t.onclick = function(){ lbIdx=i; updateLb(); };
+    strip.appendChild(t);
+  });
+}
+
+function openLb(idx){
+  lbIdx = idx;
+  buildThumbs();
+  updateLb();
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function updateLb(){
+  var el = visible[lbIdx];
+  var bg = el.querySelector('.gimg-inner').style.backgroundImage;
+  document.getElementById('lbPhoto').style.backgroundImage = bg;
+  document.getElementById('lbCaption').textContent = el.dataset.caption || '';
+  document.getElementById('lbCount').textContent = (lbIdx+1) + ' / ' + visible.length;
+  document.getElementById('lbBadge').textContent = el.dataset.catLabel || '';
+  document.getElementById('lbTitle').textContent = el.dataset.caption || '';
+  document.getElementById('lbDesc').textContent = el.dataset.desc || '';
+  // re-trigger text animation
+  var txt = document.getElementById('lbImgText');
+  txt.style.animation='none'; void txt.offsetWidth; txt.style.animation='';
+  var thumbs = document.querySelectorAll('.lb-thumb');
+  thumbs.forEach(function(t,i){ t.classList.toggle('on', i===lbIdx); });
+  if(thumbs[lbIdx]) thumbs[lbIdx].scrollIntoView({block:'nearest',inline:'center'});
+}
+function lbNav(dir){
+  lbIdx = (lbIdx+dir+visible.length)%visible.length;
+  document.getElementById('lbPhoto').style.animation='none';
+  setTimeout(function(){
+    document.getElementById('lbPhoto').style.animation='';
+    updateLb();
+  },10);
+  updateLb();
+}
+document.getElementById('lb').addEventListener('click', function(e){ if(e.target===this) closeLb(); });
+document.addEventListener('keydown', function(e){
+  if(!document.getElementById('lb').classList.contains('open')) return;
+  if(e.key==='ArrowLeft') lbNav(-1);
+  if(e.key==='ArrowRight') lbNav(1);
+  if(e.key==='Escape') closeLb();
+});
+
+var currentPage = 1;
+function changePage(dir){ goPage(currentPage+dir); }
+function goPage(n){
+  if(n<1||n>3) return;
+  currentPage = n;
+  document.querySelectorAll('.pg-btn').forEach(function(b){ b.classList.toggle('active', b.textContent==n); });
+}
 </script>
 </body>
 </html>

@@ -87,9 +87,11 @@ button{cursor:pointer;font-family:inherit}
 .sec-head .sec-sub{margin:.6rem auto 0}
 
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.about-img{height:340px;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(45,145,88,.12);position:relative}
-.about-img::after{content:'';position:absolute;inset:0;border-radius:24px;border:1px solid rgba(75,173,113,.12)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:500px;border-radius:24px;overflow:hidden;}
+.about-img{position:relative;overflow:hidden;min-height:500px;}
+.about-img::after{content:'';position:absolute;inset:0;border-radius:0;border:none}
+.about-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;max-width:none}
+.about-body{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:0.7rem;min-height:100%;padding:3rem 3.5rem;}
 .about-body p{font-size:15px;color:#555;line-height:1.85;margin:.8rem 0 1.2rem}
 .about-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.2rem}
 .tag{background:#F0FDF4;color:#2D9158;font-size:13px;padding:6px 16px;border-radius:50px;border:1px solid rgba(75,173,113,.2);font-weight:500}
@@ -273,7 +275,10 @@ button{cursor:pointer;font-family:inherit}
   .hero{height:460px}.slide-content{bottom:2rem;left:1.5rem;right:1.5rem}
   .slide-content h1{font-size:2rem}.slide-content p{font-size:13px}
   .stats-bar{padding:.8rem 1.5rem;grid-template-columns:repeat(2,1fr)}.stat{border-right:none;border-bottom:1px solid rgba(139,200,58,.1)}.stat:nth-child(even){border-bottom:none}
-  .sec{padding:3rem 1.5rem}.about-grid{grid-template-columns:1fr}
+  .sec{padding:3rem 1.5rem}
+  .about-grid{grid-template-columns:1fr;border-radius:16px}
+  .about-img{min-height:280px;position:relative}
+  .about-body{padding:2rem 1.5rem}
   .grid3{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}.gimg:first-child{grid-column:span 2}
   .route-grid{grid-template-columns:1fr}.contact-box{grid-template-columns:1fr}
