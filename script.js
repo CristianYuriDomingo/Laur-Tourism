@@ -1,3 +1,4 @@
+/* script.js */
 document.querySelectorAll('.dropdown').forEach(function(dd){
   var menu=dd.querySelector('.dropdown-menu');
   var timer;
