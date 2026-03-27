@@ -116,7 +116,7 @@ button{cursor:pointer;font-family:inherit}
 .grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .card{background:#fff;border-radius:20px;border:1px solid rgba(75,173,113,.1);overflow:hidden;cursor:pointer;transition:all .25s;box-shadow:0 4px 20px rgba(0,0,0,.05)}
 .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(45,145,88,.12);border-color:rgba(75,173,113,.22)}
-.card-img{height:185px;background-size:cover;background-position:center;position:relative;background-color:#e8f5ec}
+.card-img{width:100%;height:185px;object-fit:cover;background-color:#e8f5ec}
 .cbadge{position:absolute;top:12px;left:12px;background:linear-gradient(135deg,#4BAD71,#2D9158);color:#fff;font-size:10px;padding:4px 12px;border-radius:50px;font-weight:500;box-shadow:0 2px 8px rgba(45,145,88,.25)}
 .card-body{padding:16px 18px}
 .card-title{font-size:15px;font-weight:600;color:#1c1c1c;margin-bottom:6px}

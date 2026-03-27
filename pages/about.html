@@ -266,25 +266,6 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
   </div>
 </footer>
 
-<script src="assets/js/script.js"></script>
-<script>
-(function(){
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        if(entry.target.classList.contains('eyebrow')){
-          entry.target.classList.add('line-visible');
-        }
-        observer.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.14});
-
-  document.querySelectorAll('.anim-block').forEach(function(el){
-    observer.observe(el);
-  });
-})();
-</script>
+<script src="../assets/js/script.js"></script>
 </body>
 </html>
