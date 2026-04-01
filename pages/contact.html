@@ -209,26 +209,47 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 }
 .btn-fb svg { flex-shrink: 0; }
 
-/* RIGHT: image */
-.contact-img-side {
+/* ===== MAP SIDE (replaces image) ===== */
+.contact-map-side {
   position: relative;
-  min-height: 300px;
+  min-height: 360px;
   overflow: hidden;
+  background: #e8f5ec;
 }
-.contact-img-side img {
+.contact-map-side iframe {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: none;
   display: block;
   position: absolute;
   inset: 0;
 }
-.contact-img-overlay {
+/* Open in Maps link at bottom of map */
+.map-open-link {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(45,145,88,.12) 0%, transparent 60%);
-  z-index: 1;
+  bottom: 14px;
+  right: 14px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: #2D9158;
+  font-size: 12px;
+  font-weight: 600;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,.14);
+  border: 1px solid rgba(45,145,88,.18);
+  transition: box-shadow .2s, background .2s;
+  font-family: 'DM Sans', sans-serif;
 }
+.map-open-link:hover {
+  background: #F0FDF4;
+  box-shadow: 0 4px 16px rgba(0,0,0,.18);
+}
+.map-open-link svg { flex-shrink: 0; }
 
 /* ===== EMERGENCY GRID ===== */
 .em-grid-new {
@@ -293,7 +314,7 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 }
 @media(max-width: 768px) {
   .contact-simple { grid-template-columns: 1fr; }
-  .contact-img-side { min-height: 220px; position: relative; order: -1; }
+  .contact-map-side { min-height: 260px; position: relative; order: -1; }
   .contact-info-side { padding: 2rem 1.6rem; order: 1; }
   .em-grid-new { grid-template-columns: repeat(2, 1fr); }
 }
@@ -374,14 +395,28 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 
     </div>
 
-    <!-- RIGHT: image -->
-    <div class="contact-img-side">
-      <img src="assets/images/contacts/tourism-office.webp" alt="Laur Tourism Office">
-      <div class="contact-img-overlay"></div>
+    <!-- RIGHT: Google Map (replaces image) -->
+    <div class="contact-map-side">
+      <iframe
+        src="https://maps.google.com/maps?q=15.571879,121.168153&z=16&output=embed"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Laur Tourism Office Location">
+      </iframe>
+      <a
+        href="https://www.google.com/maps?q=15.571879,121.168153"
+        target="_blank"
+        rel="noopener"
+        class="map-open-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Open in Google Maps
+      </a>
     </div>
 
   </div>
 </section>
+<div style="padding:48px 24px 0;max-width:1140px;margin:0 auto;"><hr class="sec-divider"></div>
 
 <!-- ===== EMERGENCY NUMBERS ===== -->
 <section class="sec" id="emergency">

@@ -43,10 +43,11 @@
   /* ── NAVBAR HTML ── */
   const navbarHTML = `
 <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="nav-logo">
+ 
+<a href="${r}index.html" class="nav-logo" style="text-decoration:none;color:inherit;">
     <img src="${r}assets/images/tourism-logo.png" alt="Laur Tourism Logo" class="nav-logo-img">
     <div class="nav-brand"><strong>Laur Tourism</strong><span>Nueva Ecija · Philippines</span></div>
-  </div>
+</a>
   <div class="nav-links">
     <a href="${r}index.html"${active('home')}>Home</a>
     <a href="${r}pages/about.html"${active('about')}>About</a>
