@@ -28,14 +28,10 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 .card-loc{display:flex;align-items:center;gap:5px;}
 .card-loc img{width:13px;height:13px;object-fit:contain;flex-shrink:0;}
 
-/* ===== SOCIAL ICONS (footer) ===== */
 .social-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;overflow:hidden;background:#f0f0f0;transition:opacity .2s;}
 .social-btn:hover{opacity:.8;}
 .social-btn img{width:22px;height:22px;object-fit:contain;display:block;}
 
-/* =====================================================
-   SCROLL / ENTRANCE ANIMATIONS
-   ===================================================== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -60,7 +56,6 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 @keyframes imgPop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
 
 .anim-block { opacity: 0; }
-
 .anim-up.in-view    { animation: fadeUp   .65s both cubic-bezier(.22,.68,0,1.05); }
 .anim-fade.in-view  { animation: fadeIn   .65s both cubic-bezier(.22,.68,0,1.05); }
 .anim-left.in-view  { animation: slideLeft  .7s both cubic-bezier(.22,.68,0,1.05); }
@@ -74,7 +69,6 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 .delay-5 { animation-delay: 400ms !important; }
 .delay-6 { animation-delay: 480ms !important; }
 
-/* Eyebrow underline accent */
 .eyebrow { position: relative; display: inline-block; }
 .eyebrow::after {
   content: '';
@@ -97,25 +91,19 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 .gimg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,40,20,.75) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px;}
 .gimg:hover .gimg-overlay{opacity:1;}
 .gimg-caption{font-size:13px;color:#fff;font-weight:500;letter-spacing:.2px;}
-/* zoom pill */
 .gimg-pill{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:5px 12px 5px 8px;display:flex;align-items:center;gap:6px;opacity:0;transition:opacity .25s;font-size:11px;color:#fff;font-weight:500;letter-spacing:.3px;}
 .gimg-pill svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;}
 .gimg:hover .gimg-pill{opacity:1;}
 
-/* pills centered */
 .pills{justify-content:center;}
 
 /* ── LIGHTBOX ── */
 .lb{display:none;position:fixed;inset:0;z-index:2000;background:rgba(4,14,8,.96);flex-direction:column;align-items:center;justify-content:center;}
 .lb.open{display:flex;animation:lbIn .2s ease;}
-
-/* top bar */
 .lb-top{position:absolute;top:0;left:0;right:0;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(0,0,0,.5),transparent);z-index:10;}
 .lb-tag{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;}
 .lb-close{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .lb-close:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);}
-
-/* image stage */
 .lb-stage{flex:1;display:flex;align-items:center;justify-content:center;width:100%;padding:70px 80px;position:relative;}
 .lb-photo-wrap{position:relative;width:100%;max-width:900px;height:calc(100vh - 180px);border-radius:12px;overflow:hidden;animation:imgPop .3s ease;}
 .lb-photo-div{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#0a2a14;transition:background-image .05s;}
@@ -124,31 +112,33 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 .lb-img-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(139,200,58,.22);border:1px solid rgba(139,200,58,.45);color:#a8e060;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:10px;font-weight:500;}
 .lb-img-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:6px;}
 .lb-img-desc{font-size:13px;color:rgba(255,255,255,.62);line-height:1.6;max-width:480px;}
-
-/* side arrows */
 .lb-arr{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .22s;user-select:none;backdrop-filter:blur(4px);}
 .lb-arr:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.3);transform:translateY(-50%) scale(1.08);}
 .lb-prev{left:20px;}.lb-next{right:20px;}
-
-/* bottom bar */
 .lb-bottom{position:absolute;bottom:0;left:0;right:0;padding:24px 32px;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);display:flex;align-items:center;justify-content:space-between;}
 .lb-caption{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:.2px;}
 .lb-dots{display:flex;gap:6px;align-items:center;}
 .lb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:all .25s;border:none;cursor:pointer;padding:0;}
 .lb-dot.on{width:20px;border-radius:50px;background:#8BC83A;}
 .lb-count{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:1px;}
-
-/* thumb strip */
 .lb-thumbs{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);display:flex;gap:6px;max-width:calc(100vw - 60px);overflow-x:auto;padding:4px;scrollbar-width:none;}
 .lb-thumbs::-webkit-scrollbar{display:none;}
 .lb-thumb{width:42px;height:42px;border-radius:8px;background-size:cover;background-position:center;cursor:pointer;opacity:.4;transition:all .2s;border:2px solid transparent;flex-shrink:0;}
 .lb-thumb.on{opacity:1;border-color:#8BC83A;}
 .lb-thumb:hover{opacity:.8;}
 
-/* responsive */
+/* ── RESPONSIVE ── */
 @media(max-width:768px){
   .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
-  .gimg:first-child{grid-column:span 2;}
+  /* FIX: featured image collapses to thin strip on mobile because
+     grid-row:span 2 has nothing to fill when rows are auto-sized.
+     Reset span and give it a proper aspect ratio instead. */
+  .gimg:first-child{
+    grid-column:span 2;
+    grid-row:span 1;
+    aspect-ratio:16/9;
+    min-height:200px;
+  }
   .lb-stage{padding:60px 60px;}
   .lb-arr{width:40px;height:40px;font-size:20px;}
   .lb-prev{left:8px;}.lb-next{right:8px;}
@@ -162,15 +152,11 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 </head>
 <body data-page="gallery">
 
-<!-- NAV PLACEHOLDER -->
 <div id="nav-placeholder"></div>
-
-<!-- MOBILE MENU PLACEHOLDER -->
 <div id="mobile-menu-placeholder"></div>
 
-<!-- ===== PAGE HERO ===== -->
 <div class="page-hero">
-  <div class="page-hero-img" style="background-image:url('../assets/images/NATURAL/SIMINUBLAN.webp')"></div>
+  <div class="page-hero-img" style="background-image:url('../assets/images/hero5.webp')"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <div class="eyebrow" style="color:#E8A838">Photo Gallery</div>
@@ -179,10 +165,8 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
   </div>
 </div>
 
-<!-- ===== BANNER STRIP ===== -->
 <div class="banner-strip"></div>
 
-<!-- ===== GALLERY SECTION ===== -->
 <section class="sec alt">
   <div class="sec-head">
     <div class="eyebrow anim-block anim-up">Gallery</div>
@@ -199,81 +183,66 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 
   <div class="gallery-grid" id="galleryGrid">
 
-    <!-- ── VISIBLE (first 5) ── -->
-
-    <!-- 1. Seminublan Falls — big 2×2 featured slot -->
     <div class="gimg anim-block anim-fade delay-1" data-cat="natural" data-caption="Seminublan Falls" data-cat-label="Natural" data-desc="A stunning waterfall nestled in Brgy. San Fernando — one of Laur's most breathtaking natural treasures.">
       <div class="gimg-inner" style="background-image:url('../assets/images/NATURAL/SIMINUBLAN.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Seminublan Falls</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 2 -->
     <div class="gimg anim-block anim-fade delay-2" data-cat="natural" data-caption="Bato Ferry" data-cat-label="Natural" data-desc="A scenic river crossing in San Felipe — a unique and memorable local experience.">
       <div class="gimg-inner" style="background-image:url('../assets/images/NATURAL/BATO.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Bato Ferry</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 3 -->
     <div class="gimg anim-block anim-fade delay-3" data-cat="natural" data-caption="Hidden Falls" data-cat-label="Natural" data-desc="A hidden waterfall deep within Brgy. San Fernando — waiting to be discovered by adventurous visitors.">
       <div class="gimg-inner" style="background-image:url('../assets/images/NATURAL/HIDDEN.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Hidden Falls</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 4 -->
     <div class="gimg anim-block anim-fade delay-4" data-cat="manmade" data-caption="Sunsetpeak Nature Camp" data-cat-label="Man-made" data-desc="Experience nature camping with stunning sunset views in Brgy. Nauzon.">
       <div class="gimg-inner" style="background-image:url('../assets/images/STAY/SUNSET.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Sunsetpeak Nature Camp</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 5 -->
     <div class="gimg anim-block anim-fade delay-1" data-cat="manmade" data-caption="Casa Celestine" data-cat-label="Man-made" data-desc="A beautiful private resort in Brgy. Siclong — perfect for relaxation and special events.">
       <div class="gimg-inner" style="background-image:url('../assets/images/STAY/CASA.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Casa Celestine</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- ── HIDDEN (shown after clicking the button) ── -->
-
-    <!-- 6 -->
     <div class="gimg gallery-hidden anim-block anim-fade delay-2" style="display:none" data-cat="manmade" data-caption="Sierran Resort" data-cat-label="Man-made" data-desc="A relaxing resort in Brgy. Siclong surrounded by beautiful mountain scenery.">
       <div class="gimg-inner" style="background-image:url('../assets/images/STAY/SIERRAN.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Sierran Resort</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 7 -->
     <div class="gimg gallery-hidden anim-block anim-fade delay-3" style="display:none" data-cat="manmade" data-caption="Mountain View Resort" data-cat-label="Man-made" data-desc="Enjoy stunning mountain views and resort facilities in Brgy. Siclong.">
       <div class="gimg-inner" style="background-image:url('../assets/images/STAY/MVR.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Mountain View Resort</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 8 -->
     <div class="gimg gallery-hidden anim-block anim-fade delay-4" style="display:none" data-cat="manmade" data-caption="Camila Farm Resort" data-cat-label="Man-made" data-desc="Farm resort in Brgy. Betania — offering nature, rest, and fresh air.">
       <div class="gimg-inner" style="background-image:url('../assets/images/STAY/CAMILLA.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Camila Farm Resort</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 9 -->
     <div class="gimg gallery-hidden anim-block anim-fade delay-1" style="display:none" data-cat="manmade" data-caption="Lelo's Mountain Resort" data-cat-label="Man-made" data-desc="A beautiful mountain resort in Brgy. San Isidro with stunning natural surroundings.">
       <div class="gimg-inner" style="background-image:url('../assets/images/STAY/LELO.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Lelo's Mountain Resort</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 10 -->
     <div class="gimg gallery-hidden anim-block anim-fade delay-2" style="display:none" data-cat="manmade" data-caption="Clareng's Farm Resort" data-cat-label="Man-made" data-desc="A beautiful farm resort in Brgy. Sagana — offering a true farm-to-table experience.">
       <div class="gimg-inner" style="background-image:url('../assets/images/STAY/CLARENG.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Clareng's Farm Resort</span></div>
       <div class="gimg-pill"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View</div>
     </div>
 
-    <!-- 11 — CULTURE: Pagulyas -->
     <div class="gimg gallery-hidden anim-block anim-fade delay-3" style="display:none" data-cat="culture" data-caption="Pagulyas Festival" data-cat-label="Culture" data-desc="Pagulyas is Laur's vibrant local festival — a celebration of culture, harvest, and community pride unique to Nueva Ecija.">
       <div class="gimg-inner" style="background-image:url('../assets/images/pagulyas.webp')"></div>
       <div class="gimg-overlay"><span class="gimg-caption">Pagulyas Festival</span></div>
@@ -289,13 +258,10 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 
 <!-- ===== LIGHTBOX ===== -->
 <div class="lb" id="lb" role="dialog" aria-modal="true">
-  <!-- Top bar -->
   <div class="lb-top">
     <span class="lb-tag">Laur, Nueva Ecija</span>
     <button class="lb-close" onclick="closeLb()" aria-label="Close">&#x2715;</button>
   </div>
-
-  <!-- Image stage -->
   <div class="lb-stage">
     <button class="lb-arr lb-prev" onclick="lbNav(-1)" aria-label="Previous">&#8249;</button>
     <div class="lb-photo-wrap">
@@ -308,11 +274,7 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
     </div>
     <button class="lb-arr lb-next" onclick="lbNav(1)" aria-label="Next">&#8250;</button>
   </div>
-
-  <!-- Thumbnail strip -->
   <div class="lb-thumbs" id="lbThumbs"></div>
-
-  <!-- Bottom bar -->
   <div class="lb-bottom">
     <span class="lb-caption" id="lbCaption"></span>
     <span class="lb-count" id="lbCount"></span>
@@ -321,7 +283,6 @@ h1,h2,h3,.sec-title,.card-title,.footer-brand strong,.footer-col h4{font-family:
 
 <div style="padding:48px 24px 0;max-width:1140px;margin:0 auto;"><hr class="sec-divider"></div>
 
-<!-- FOOTER PLACEHOLDER -->
 <div id="footer-placeholder"></div>
 
 <script src="../assets/js/components.js" defer></script>

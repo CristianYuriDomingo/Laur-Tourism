@@ -12,7 +12,7 @@ const attractions = [
     modalImage: "../assets/images/NATURAL/SIMINUBLAN.webp",
     type: "Natural Attraction",
     contact: "",
-    coordinates: "15.595597,121.215297",
+    coordinates: "15.608772909420631, 121.23988256136721",
     fbLink: "https://www.facebook.com/share/r/1HwmxC7zQ6/"
   },
   {
@@ -57,11 +57,11 @@ const attractions = [
     category: "manmade",
     location: "Brgy. San Josep",
     description: "Private pool resort in Brgy. San Josep — ideal for group outings and celebrations.",
-    image: "../assets/images/STAY/FOUR.webp",
-    modalImage: "../assets/images/STAY/FOUR.webp",
+    image: "../assets/images/STAY/GREEN.webp",
+    modalImage: "../assets/images/STAY/GREEN.webp",
     type: "Private Pool Resort",
     contact: "09126147056",
-    coordinates: "15.564997,121.240000",
+    coordinates: "15.567950197427495, 121.14518685609903",
     fbLink: "https://www.facebook.com/greenhouseprivatepool"
   },
   {
